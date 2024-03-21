@@ -1,0 +1,22 @@
+{
+  "userData": [
+    {
+      "id": "7df0",
+      "imagepath": "C:\\fakepath\\WhatsApp Image 2024-03-20 at 12.01.01 AM.jpeg",
+      "firstname": "john",
+      "lastname": "smith",
+      "email": "john@gmail.com",
+      "mob": "0245432967",
+      "age": 52,
+      "state": "Maharashtra",
+      "country": "Sri Lanka",
+      "addressType": "company",
+      "address1": "pippari",
+      "address2": "pune",
+      "tags": "cricket hockey football",
+      "newsletter": true
+    }
+    
+    
+  ]
+}

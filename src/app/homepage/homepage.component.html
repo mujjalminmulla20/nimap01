@@ -1,0 +1,654 @@
+<body>
+  <div class="background">
+    <div class="container">
+      <header class="header">
+        <a href="url_to_your_logo_image"></a>
+        <div class="navbar">
+          <a href="#">Home</a>
+          <a href="#">About us</a>
+          <a href="#">Jobs</a>
+          <a href="#">Clients</a>
+          <a href="#">Employers</a>
+          <a href="#">Contact us</a>
+        </div>
+      </header>
+    </div>
+
+    <div class="Main">
+      <div>
+        <h1><i> I'm looking for a job</i></h1>
+
+        <label for="job-description"></label>
+      </div>
+      <br />
+      <div class="main2">
+        <input
+          type="text"
+          id="job-description"
+          name="job-description"
+          placeholder="Enter a job description"
+        />
+        <span> <button type="submit">Search</button> </span>
+      </div>
+      <div>
+        <label>
+          <input type="checkbox" name="jobType" value="fullTime" />
+          Full Time
+        </label>
+        <label>
+          <input type="checkbox" name="jobType" value="partTime" />
+          Part Time /casual /freelancing
+        </label>
+
+        <label for="location" style="margin: 40px">Select your Location</label>
+        <select id="location" name="location">
+          <option value=""></option>
+
+          <option value="">Mumbai</option>
+          <option value="">Pune</option>
+          <option value="">Hydrabad</option>
+          <option value="">Chennai</option>
+        </select>
+
+        <!-- Button trigger modal -->
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#staticBackdrop"
+        >
+          Register
+        </button>
+
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="staticBackdrop"
+          data-bs-backdrop="static"
+          data-bs-keyboard="false"
+          tabindex="-1"
+          aria-labelledby="staticBackdropLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">
+                  RegistrationForm
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div class="container">
+                  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+                    <div class="row g-0">
+                      <div class="col text-center p-2 mb-3 bg-light">
+                        <span class="fs-3"></span>
+                      </div>
+                    </div>
+
+                    <div
+                      class="col"
+                      style="
+                        display: flex;
+                        justify-content: left;
+                        align-items: left;
+                      "
+                    >
+                      <!-- Image Preview -->
+
+                      <img
+                        [src]="imageUrl"
+                        style="width: 100px; height: 100px"
+                      /><br />
+                      <input
+                        type="file"
+                        accept="image/*"
+                        (change)="handleFileInput($event)"
+                  formControlName="imagepath"  required     [ngClass]="{
+                    'is-invalid': isFormSubmit && f.imagepath.errors
+                  }" />
+                   <div
+                   *ngIf="isFormSubmit && f.imagepath.errors?.required"
+                   class="invalid-feedback"
+                 >
+                   please select image
+                 </div>
+                      <!-- <input type="text" class="form-control" id="imageUrl"> -->
+                    </div>
+                    <br />
+                    <div
+                      class="row"
+                      style="
+                        display: flex;
+                        justify-content: right;
+                        align-items: right;
+                      "
+                    >
+                      <div class="col mb-3">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="firstname"
+                          placeholder="First Name"
+                          formControlName="firstname"
+                          required
+                          [ngClass]="{
+                            'is-invalid': isFormSubmit && f.firstname.errors
+                          }"
+                        />
+                        <div
+                          *ngIf="isFormSubmit && f.firstname.errors?.required"
+                          class="invalid-feedback"
+                        >
+                          first name is required
+                        </div>
+                        <div
+                          *ngIf="isFormSubmit && f.firstname.errors?.pattern"
+                          class="invalid-feedback"
+                        >
+                          Only alphabetic characters are allowed
+                        </div>
+                      </div>
+
+                      <br />
+
+                      <!-- <div class="row"> -->
+
+                      <div class="col mb-3">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="lastname"
+                          placeholder="Last Name"
+                          formControlName="lastname"
+                          required
+                          [ngClass]="{
+                            'is-invalid': isFormSubmit && f.lastname.errors
+                          }"
+                        />
+
+                        <div
+                          *ngIf="isFormSubmit && f.lastname.errors?.required"
+                          class="invalid-feedback"
+                        >
+                          last name is required
+                        </div>
+                        <div
+                          *ngIf="isFormSubmit && f.lastname.errors?.pattern"
+                          class="invalid-feedback"
+                        >
+                          Only alphabetic characters are allowed
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col mb-3">
+                        <input
+                          type="email"
+                          class="form-control"
+                          id="email"
+                          placeholder="Email"
+                          formControlName="email"
+                          required
+                          [ngClass]="{
+                            'is-invalid': isFormSubmit && f.email.errors
+                          }"
+                        />
+                        <div
+                          *ngIf="isFormSubmit && f.email.errors?.required"
+                          class="invalid-feedback"
+                        >
+                          Email is Required
+                        </div>
+                        <div
+                          *ngIf="isFormSubmit && f.email.errors?.pattern"
+                          class="invalid-feedback"
+                        >
+                          Enter the Proper Email
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col mb-3">
+                        <input
+                          type="tel"
+                          class="form-control"
+                          id="moblieno"
+                          placeholder="(541)754-3010"
+                          formControlName="mob"
+                          [ngClass]="{
+                            'is-invalid': isFormSubmit && f.mob.errors
+                          }"
+                        />
+                        <div
+                          *ngIf="isFormSubmit && f.mob.errors?.required"
+                          class="invalid-feedback"
+                        >
+                          Mobile number is required
+                        </div>
+                        <div
+                          *ngIf="
+                            isFormSubmit && f.mob.errors?.invalidMobileNumber
+                          "
+                          class="invalid-feedback"
+                        >
+                          Invalid mobile number
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col mb-3">
+                        <p>age</p>
+                        <input
+                          type="range"
+                          min="0"
+                          max="60"
+                          value="0"
+                          class="slider"
+                          id="age"
+                          (input)="onRangeChange($event)"
+                          formControlName="age"
+                        />
+                        <p>{{ selectedValue }}</p>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col mb-3">
+                        <select
+                          class="form-select"
+                          formControlName="state"
+                          required
+                          [ngClass]="{
+                            'is-invalid': isFormSubmit && f.state.errors
+                          }"
+                        >
+                          >
+                          <option value="" disabled selected>
+                            Select State
+                          </option>
+                          <option *ngFor="let state of states" [value]="state">
+                            {{ state }}
+                          </option>
+                        </select>
+                        <div
+                          *ngIf="isFormSubmit && f.state.errors?.required"
+                          class="invalid-feedback"
+                        >
+                          State is required
+                        </div>
+                      </div>
+                    </div>
+                    <!-- </div> -->
+
+                    <!-- Country and Address Fields -->
+                    <div class="row">
+                      <div class="col mb-3">
+                        <select
+                          class="form-select"
+                          formControlName="country"
+                          required
+                          [ngClass]="{
+                            'is-invalid': isFormSubmit && f.country.errors
+                          }"
+                        >
+                          >
+                          <option value="" disabled selected>
+                            Select Country
+                          </option>
+                          <option
+                            *ngFor="let country of countries"
+                            [value]="country"
+                          >
+                            {{ country }}
+                          </option>
+                        </select>
+                        <div
+                          *ngIf="isFormSubmit && f.country.errors?.required"
+                          class="invalid-feedback"
+                        >
+                          Country is required
+                        </div>
+                      </div>
+
+                       <div class="row">
+                        <div class="col mb-3">
+                        <!-- <textarea
+                            class="form-control"
+                            placeholder="Address"
+                            formControlName="address"
+                            required
+                            [ngClass]="{
+                              'is-invalid': isFormSubmit && f.address.errors
+                            }"
+                          >
+                        </textarea>
+                          <div
+                            *ngIf="isFormSubmit && f.address.errors?.required"
+                            class="invalid-feedback"
+                          >
+                            Address is required
+                          </div> -->
+
+                          <label for="addressType">Address Type:</label>
+                          <select formControlName="addressType"  required
+                          [ngClass]="{
+                            'is-invalid': isFormSubmit && f.addressType.errors
+                          }"
+                        >
+                            <option value="home">Home</option>
+                            <option value="company">Company</option>
+                          </select>     <div
+                          *ngIf="isFormSubmit && f.addressType.errors?.required"
+                          class="invalid-feedback"
+                        >
+                          please Select Your Address
+                        </div>
+                        
+                          <div *ngIf="registrationForm.get('addressType').value === 'home'">
+                            <label for="address1">Address 1:</label>
+                            <input type="text"  id="address1"  formControlName="address1"  required
+                            [ngClass]="{
+                              'is-invalid': isFormSubmit && f.address1.errors
+                            }"
+                          >   <div
+                          *ngIf="isFormSubmit && f.address1.errors?.required"
+                          class="invalid-feedback"
+                        >
+                          Address 1 is required
+                        </div> 
+                            <label for="address2">Address 2:</label>
+                            <input type="text"  id="address2" formControlName="address2" required
+                            [ngClass]="{
+                              'is-invalid': isFormSubmit && f.address2.errors
+                            }"
+                          > <div
+                          *ngIf="isFormSubmit && f.address2.errors?.required"
+                          class="invalid-feedback"
+                        >
+                          Address 2 is required
+                        </div> 
+                          </div>
+
+                          
+                        
+                          <div *ngIf="registrationForm.get('addressType').value === 'company'">
+                           <label for="companyAddress1">Company Address 1:</label>
+                            <input type="text"  id="companyAddress1"  formControlName="address2"  required
+                            [ngClass]="{
+                              'is-invalid': isFormSubmit && f. address1.errors
+                            }"
+                          ><div
+                          *ngIf="isFormSubmit && f.address1.errors?.required"
+                          class="invalid-feedback"
+                        >
+                         Company Address 1 is required
+                        </div> 
+                            <label for="companyAddress2">Company Address 2:</label>
+                            <input type="text"  id="companyAddress2" formControlName="address1" required
+                            [ngClass]="{
+                              'is-invalid': isFormSubmit && f.address2.errors
+                            }"
+                          ><div
+                          *ngIf="isFormSubmit && f.address2.errors?.required"
+                          class="invalid-feedback"
+                        >
+                         company Address 2 is required
+                        </div>  
+
+
+
+
+
+
+
+
+
+
+                           </div> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                          
+                        </div>
+                      </div> 
+                    </div>
+
+                    <!-- Tags Field -->
+                    <div class="row mb-3">
+                      <div class="col">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Tags"
+                          formControlName="tags"
+                          required
+                          [ngClass]="{
+                            'is-invalid': isFormSubmit && f.tags.errors
+                          }"
+                        />
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-primary mt-1"
+                          (click)="onClick()"
+                        >
+                          Add Tag
+                        </button>
+                        <div
+                          *ngFor="let tag of tags"
+                          class="badge bg-secondary"
+                        >
+                          {{ tag }}
+                        </div>
+                        <div
+                          *ngIf="isFormSubmit && f.tags.errors?.required"
+                          class="invalid-feedback"
+                        >
+                          Tags are required
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Newsletter Checkbox -->
+                    <div class="form-check mb-3">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="newsletter"
+                        formControlName="newsletter"
+                        required
+                        [ngClass]="{
+                          'is-invalid': isFormSubmit && f.newsletter.errors
+                        }"
+                      />
+                      <label class="form-check-label" for="newsletter">
+                        Subscribe to newsletter
+                      </label>
+                    </div>
+
+                    <!-- Submit and Cancel Buttons -->
+                    <div class="row">
+                      <div class="col">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-bs-dismiss="modal"
+                        >
+                          Close</button
+                        >&nbsp;
+
+                        <button  type="reset" class="btn btn-danger"> Clear Data</button>&nbsp;
+                        <button type="submit" class="btn btn-primary">
+                          Submit
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="modal-footer"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="second">
+    <h2><i>We Are Leaders in</i></h2>
+
+    <h1>Creative Digital Requirment</h1>
+
+    <div class="info" style="display: flex; justify-content: center">
+      <p>
+        <b
+          >Based in Surry Hills , the creative hub of sydney we are surrounded
+          by creativity
+        </b>
+      </p>
+    </div>
+    <div class="info2" style="display: flex; justify-content: center">
+      <p>
+        <b>and that refiects on the type of jobs we recruit for</b>
+      </p>
+      <!-- 
+    <div class="col-3 offset-3 d-grid" style="" > -->
+    </div>
+
+    <div class="btn" style="display: flex; justify-content: center">
+      <button
+        style="
+          border: 5px solid skyblue;
+          border-radius: 10px;
+
+          color: skyblue;
+          background-color: lightgray;
+          padding: 15px 32px;
+          display: flex;
+
+          text-align: center;
+          text-decoration: none;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+        "
+      >
+        Find out more about us!
+      </button>
+    </div>
+
+    <div class="container2">
+      <div class="info3" style="align-items: center; padding-top: 150px">
+        <p style="color: white">Subscribe to our Job Seeker Mailing List</p>
+        <div class="input-field">
+          <div class="form-input">
+            <span class="icon"
+              ><i class="fa fa-envelope" aria-hidden="true"></i
+            ></span>
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter your email"
+              style="
+                border: solid 5px skyblue;
+                border-radius: 10px;
+                background-color: black;
+                color: white;
+              "
+            />
+          </div>
+
+          <!-- <img src="/MyTask/src/assets/img/email.png" alt="" style="color: white;">
+         <i> <input type="email"    placeholder="Enter Your Email Address"        
+          
+          style=" border:solid 5px skyblue;   border-radius: 10px;  background-color: black; color: white;" > </i> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mail" style="padding-left: 100px; margin-top: 130px">
+    <img
+      src="https://cdn.iconscout.com/icon/free/png-512/free-mail-706-434075.png?f=webp&w=256"
+      alt="Not Supported"
+      style="color: blue; height: 30px; width: 35px"
+    />
+
+    <input
+      type="email"
+      reqiuired
+      placeholder=" "
+      style="height: 30px; width: 160px; border: none"
+    />
+  </div>
+
+  <div class="above-footer">
+    <p class="copyright" style="text-align: left; margin-top: 20px">
+      Copyright © 2014 Two Bytes Consulting.
+      <a href="#" class="terms-link"> <b> Terms & Conditions </b></a>
+    </p>
+    <div class="social-icons">
+      <a href="#"
+        ><img
+          src="https://cdn.iconscout.com/icon/free/png-512/free-twitter-share-button-3289861-2758559.png?f=webp&w=256"
+          alt="Twitter"
+          style="height: 60px; width: 90px"
+      /></a>
+
+      <a href="#"
+        ><img
+          src="https://cdn.iconscout.com/icon/free/png-512/free-facebook-share-button-3289859-2758557.png?f=webp&w=256"
+          alt="Facebook"
+          style="height: 60px; width: 90px"
+      /></a>
+    </div>
+  </div>
+
+  <!-- </div> -->
+</body>

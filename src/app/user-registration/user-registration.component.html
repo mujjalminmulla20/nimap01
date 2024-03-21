@@ -1,0 +1,247 @@
+<!-- <form class="border border-dark" >
+
+
+
+<div class="row g-0">
+
+    <div class="col text-center p-2 mb-3 bg-light">
+        <span class="fs-3">Register</span>
+    </div>
+</div>
+
+<div class="row">
+
+
+<input type="text" class="form-control" id="firstname">
+
+
+
+</div>
+
+
+</form> -->
+<!-- 
+<div class="container">
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+      <div class="row g-0">
+        <div class="col text-center p-2 mb-3 bg-light">
+          <span class="fs-3">Register</span>
+        </div>
+      </div>
+  
+      <img [src]="imageUrl" style="width: 200px; height: 150px;"><br>
+      <input type="file" accept="image/*" (change)="handleFileInput($event)">
+  
+      <div class="row">
+        <div class="col mb-3">
+          <input type="text" class="form-control" placeholder="First Name" formControlName="firstname">
+          <div *ngIf="isFormSubmit && f.firstname.errors?.required" class="invalid-feedback">First name is required</div>
+        </div>
+        <div class="col mb-3">
+          <input type="text" class="form-control" placeholder="Last Name" formControlName="lastname">
+          <div *ngIf="isFormSubmit && f.lastname.errors?.required" class="invalid-feedback">Last name is required</div>
+        </div>
+      </div>
+  
+      
+  
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+    </form>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ -->
+
+
+ <div class="container">
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+      <div class="row g-0">
+        <div class="col text-center p-2 mb-3 bg-light">
+          <span class="fs-3">Register</span>
+        </div>
+      </div>
+  
+      <!-- Image Preview -->
+      <img [src]="imageUrl" style="width: 200px; height: 150px;"><br>
+      <input type="file" accept="image/*" (change)="handleFileInput($event)">
+  
+
+
+        <div class="row">
+            <div class="col mb-3">
+              <input type="text" class="form-control" id="firstname" placeholder="First Name" formControlName="firstname"
+              required [ngClass]="{'is-invalid':isFormSubmit && f.firstname.errors}">
+              <div *ngIf="isFormSubmit && f.firstname.errors?.required " class="invalid-feedback">first name is required</div> 
+            </div>
+        
+
+
+
+
+          <!-- <div class="row"> -->
+  
+            <div class="col mb-3">
+              <input type="text" class="form-control" id="lastname" placeholder="Last Name" formControlName="lastname" 
+              required [ngClass]="{'is-invalid':isFormSubmit && f.lastname.errors}" >
+              <div *ngIf="isFormSubmit && f.lastname.errors?.required " class="invalid-feedback">last name is required</div> 
+            </div>
+    
+          </div>
+
+
+        
+
+
+   
+      <div class="row">
+        <div class="col mb-3">
+          <input type="email" class="form-control" id="email" placeholder="Email" formControlName="email"
+          
+required
+[ngClass]="{'is-invalid' :isFormSubmit && f.email.errors}">
+<div *ngIf="isFormSubmit && f.email.errors?.required" class="invalid-feedback">Email is Required</div>
+<div *ngIf="isFormSubmit && f.email.errors?.pattern" class="invalid-feedback"> Enter the Proper Email</div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+      <div class="row">
+        <div class="col mb-3">
+          <input type="tel" class="form-control" id="moblieno" placeholder="(541)754-3010" formControlName="mob"
+                  
+required
+[ngClass]="{'is-invalid' :isFormSubmit && f.mob.errors}">
+<div *ngIf="isFormSubmit && f.mob.errors?.required " class="invalid-feedback">mobile number is required</div> 
+</div> 
+        </div>
+      
+
+
+
+
+<div class="row">
+    <div class="col mb-3">
+      
+      <p>age</p>
+        <input type="range" min="20" max="60" value="0" class="slider" id="age" (input)="onRangeChange($event)" formControlName="age">
+        <p>{{ selectedValue }}</p>
+      </div>
+    
+  </div> 
+
+
+
+
+<div class="row">
+        <div class="col mb-3">
+          <select class="form-select" formControlName="state" 
+                                    
+required
+[ngClass]="{'is-invalid' :isFormSubmit && f.state.errors}">
+>
+            <option value="" disabled selected>Select State</option>
+            <option *ngFor="let state of states" [value]="state">{{ state }}</option>
+          </select>
+          <div *ngIf="isFormSubmit && f.state.errors?.required" class="invalid-feedback">State is required</div>
+        </div>
+</div>
+      <!-- </div> -->
+  
+      <!-- Country and Address Fields -->
+      <div class="row">
+        <div class="col mb-3">
+          <select class="form-select" formControlName="country" 
+                                    
+required
+[ngClass]="{'is-invalid' :isFormSubmit && f.country.errors}">
+>
+            <option value="" disabled selected>Select Country</option>
+            <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
+          </select>
+          <div *ngIf="isFormSubmit && f.country.errors?.required" class="invalid-feedback">Country is required</div>
+        </div>
+
+
+
+
+        <div class="row">
+        <div class="col mb-3 ">
+          <textarea class="form-control" placeholder="Address" formControlName="address"  
+          required [ngClass]="{'is-invalid':isFormSubmit && f.address.errors}"></textarea>
+          <div *ngIf="isFormSubmit && f.address.errors?.required" class="invalid-feedback">Address is required</div>
+        </div>
+      </div>
+    </div>
+  
+      <!-- Tags Field -->
+      <div class="row mb-3">
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Tags" formControlName="tags"   
+          required [ngClass]="{'is-invalid':isFormSubmit && f.tags.errors}">
+          <button type="button" class="btn btn-sm btn-primary mt-1" (click)="onClick()">Add Tag</button>
+          <div *ngFor="let tag of tags" class="badge bg-secondary">{{ tag }}</div>
+          <div *ngIf="isFormSubmit && f.tags.errors?.required" class="invalid-feedback">Tags are required</div>
+        </div>
+      </div>
+  
+      <!-- Newsletter Checkbox -->
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="checkbox" id="newsletter" formControlName="newsletter" 
+        required [ngClass]="{'is-invalid':isFormSubmit && f.newsletter.errors}">
+        <label class="form-check-label" for="newsletter">
+          Subscribe to newsletter
+        </label>
+      </div>
+  
+      <!-- Submit and Cancel Buttons -->
+      <div class="row">
+        <div class="col">
+        
+          <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>&nbsp;
+          <button type="submit" class="btn btn-primary" >Submit</button> 
+        </div>
+      </div>
+    </form>
+  </div>
+  

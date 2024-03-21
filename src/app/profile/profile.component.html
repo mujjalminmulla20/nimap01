@@ -1,0 +1,83 @@
+ 
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+   <a class="navbar-brand" href="#">Navbar</a>
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+     <span class="navbar-toggler-icon"></span>
+   </button>
+   <div class="collapse navbar-collapse" id="navbarNav">
+     <ul class="navbar-nav">
+       <li class="nav-item active">
+         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" href="#">Features</a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" href="#">Pricing</a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+       </li>
+     </ul>
+   </div>
+ </nav>
+ 
+
+
+
+<ng-container  *ngIf="tableData.length >0" > 
+  <table *ngFor="let dt of tableData">
+
+   <div *ngIf="!editing">
+      <img [src]="profileImageUrl" alt="Profile Image" style="height: 310px; width: 325px;">
+        <!-- <img [src]="dt.imagepath" style="height: 350px;" > -->
+      <!-- <img src="https://media.istockphoto.com/id/1365436662/photo/successful-partnership.jpg?s=612x612&w=0&k=20&c=B1xspe9Q5WMsLc7Hc9clR8MWUL4bsK1MfUdDNVNR2Xg=" alt=""> -->
+      <button (click)="startEditing()" class="btn btn-primary">Edit Image</button> &nbsp;
+      
+    </div>
+    <div *ngIf="editing">
+      <input type="file" (change)="onFileSelected($event)">
+      <button (click)="cancelEditing()">Cancel</button>
+      <button (click)="saveImage()">Save</button>
+    </div>
+    
+
+
+<!-- <table *ngFor="let dt of tableData">
+    -->
+<br>
+
+<br>
+<img [src]="dt.imagepath" style="height: 350px;" >
+<!-- <button (click)="startEditing()" class="btn btn-primary">Edit Image</button> &nbsp; -->
+<br>
+i am {{dt.firstname}}
+{{dt.lastname}}
+and im above {{dt.age}} years old you
+<br>
+can send your mail to  <a href="">{{dt.email}}</a> i live in the state of 
+<br>
+{{dt.state}} I like to play  {{dt.tags}}
+And Please send me newsletter
+<br>
+please reach out to me on my mobile number
+
+
+
+
+<button class="btn btn-info" (click)="UpdateDt(dt)"    
+
+data-bs-toggle="modal"
+data-bs-target="#staticBackdrop"
+
+>Edit Profile</button>
+
+
+   
+   </table> 
+  
+   
+
+</ng-container> 
+   
+ 
