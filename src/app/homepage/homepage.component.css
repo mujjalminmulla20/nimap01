@@ -199,3 +199,15 @@ input {
 }
 
 
+
+
+/* photo-upload.component.css */
+.is-invalid {
+  border-color: red;
+}
+.invalid-feedback {
+  color: red;
+  font-size: 14px;
+}
+
+

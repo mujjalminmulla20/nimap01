@@ -1,8 +1,39 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { CommonService } from '../common.service';
 
 import { Route, Router } from '@angular/router';
+
+function imageDimensionsValidator(width: number, height: number) {
+  return (control: FormControl): { [key: string]: any } | null => {
+    const file = control.value;
+    if (file) {
+      const img = new Image();
+      img.src = window.URL.createObjectURL(file);
+
+      return new Promise((resolve) => {
+        img.onload = () => {
+          const imgWidth = img.width;
+          const imgHeight = img.height;
+
+          if (imgWidth !== width || imgHeight !== height) {
+            resolve({
+              invalidDimensions: {
+                requiredWidth: width,
+                requiredHeight: height,
+                actualWidth: imgWidth,
+                actualHeight: imgHeight,
+              },
+            });
+          } else {
+            resolve(null);
+          }
+        };
+      });
+    }
+    return null;
+  };
+}
 
 @Component({
   selector: 'app-homepage',
@@ -13,7 +44,7 @@ export class HomepageComponent {
   public allData: any = [];
   public tableData: any = [];
   // imageUrl: string | ArrayBuffer | null = null;
-public setDt:any
+  public setDt: any;
   registrationForm: any;
   selectedValue: number = 20;
   imageUrl: string =
@@ -35,9 +66,12 @@ public setDt:any
     private route: Router
   ) {
     this.registrationForm = this.fb.group({
-      
+      imagepath: [
+        '',
+        [Validators.required, imageDimensionsValidator(310, 325)],
+      ],
       // imagepath:['',[Validators.required]],
-      imagepath: ['', Validators.required],
+      // imagepath: ['', Validators.required],
       firstname: [
         '',
         [
@@ -86,13 +120,9 @@ public setDt:any
 
     this.getData();
 
-    
-
-  this.registrationForm.get('companyAddress1').disable();
-  this.registrationForm.get('companyAddress2').disable();
-
+    this.registrationForm.get('companyAddress1').disable();
+    this.registrationForm.get('companyAddress2').disable();
   }
-
 
   get firstName() {
     return this.registrationForm.get('firstName');
@@ -117,20 +147,16 @@ public setDt:any
     }
   }
 
-ngOnInit(){
-  this.comser.getDtService1().subscribe({
-   next: (res:any)=>{
-  
-    this.setDt=res
-    console.log(this.setDt)
-   }
+  ngOnInit() {
+    this.comser.getDtService1().subscribe({
+      next: (res: any) => {
+        this.setDt = res;
+        console.log(this.setDt);
+      },
+    });
 
-  })
-
-this.registrationForm.patchValue(this.setDt)
-
-}
-
+    this.registrationForm.patchValue(this.setDt);
+  }
 
   onSubmit() {
     this.isFormSubmit = true;
@@ -138,43 +164,14 @@ this.registrationForm.patchValue(this.setDt)
       const formData = this.registrationForm.value;
 
       this.comser.sendDataService(this.registrationForm.value);
-      this.sendData()
+      this.sendData();
 
-  
       this.route.navigate(['profile']);
     } else {
     }
 
     //  this.registrationForm.reset();
   }
-
-  // onSubmit() {
-  //   this.isFormSubmit = true;
-  //   if (this.registrationForm.valid) {
-  //     const formData = this.registrationForm.value;
-  //     // this.comser.sendDtApi(formData).subscribe(
-  //     //   response => {
-  //     //     console.log('Data saved successfully:', response);
-
-  //     //     // this.registrationForm.reset();
-  //     //   },
-  //     //   error => {
-  //     //     console.error('Error saving data:', error);
-  //     //   }
-  //     // );
-
-  //         this.comser.sendDataService(this.registrationForm.value)
-
-  // this.route.navigate(['.profile'])
-  // this.route.navigate(['profile']);
-
-  //   } else {
-
-  //   }
-
-  //      this.registrationForm.reset();
-
-  // }
 
   getData() {
     this.comser.getApi().subscribe({
@@ -189,19 +186,18 @@ this.registrationForm.patchValue(this.setDt)
   }
 
   sendData() {
-    this.comser
-      .sendDtApi(this.registrationForm.value).subscribe({
-        next:(res:any)=>{
-          // console.log(res)
-          this.tableData = res;
-          console.log(this.tableData)
-        }
-      })
-    
-      // .then((res) => {
-      //   console.log(res);
-      //   this.tableData = res;
-      // });
+    this.comser.sendDtApi(this.registrationForm.value).subscribe({
+      next: (res: any) => {
+        // console.log(res)
+        this.tableData = res;
+        console.log(this.tableData);
+      },
+    });
+
+    // .then((res) => {
+    //   console.log(res);
+    //   this.tableData = res;
+    // });
   }
 
   onClick() {
@@ -219,8 +215,6 @@ this.registrationForm.patchValue(this.setDt)
     const target = event.target as HTMLInputElement;
     this.selectedValue = parseInt(target.value);
   }
-
-
 
   toggleCompanyAddressFields(): void {
     const addressType = this.registrationForm.get('addressType').value;

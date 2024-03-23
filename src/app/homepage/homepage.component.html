@@ -126,42 +126,46 @@
 
 
 
-<!-- 
- <img [src]="imageUrl" style="width: 100px; height: 100px"><br />
-  <input type="file" accept="image/*" (change)="handleFileInput($event)" formControlName="imagepath" required [ngClass]="{ 'is-invalid': isFormSubmit && f.imagepath.errors }" />
-  <div *ngIf="isFormSubmit && f.imagepath.errors?.required" class="invalid-feedback">
+
+
+
+
+
+
+
+<!-- photo-upload.component.html -->
+<img [src]="imageUrl" style="width: 100px; height: 100px;"><br />
+
+<input type="file" accept="image/*" (change)="handleFileInput($event)" formControlName="imagepath" required
+  [ngClass]="{ 'is-invalid': isFormSubmit && registrationForm.get('imagepath').errors }" />
+
+<div *ngIf="isFormSubmit && registrationForm.get('imagepath').errors">
+  <div *ngIf="registrationForm.get('imagepath').errors.required" class="invalid-feedback">
     Please select an image.
   </div>
- -->
-
-
-
-
-
-<!--  
-
- <img [src]="imageUrl" style="width: 100px; height: 100px;"><br />
-
- <input type="file" accept="image/*" (change)="handleFileInput($event)" formControlName="imagepath" required
-        [ngClass]="{ 'is-invalid': isFormSubmit && f.imagepath.errors }" />
- 
- <div *ngIf="isFormSubmit && f.imagepath.errors?.required" class="invalid-feedback">
-   Please select an image.
- </div>   -->
-
-
-
-
-
- <img [src]="imageUrl" style="width: 100px; height: 100px;"><br />
-
-  <input type="file" accept="image/*" (change)="handleFileInput($event)" formControlName="imagepath" required
-         [ngClass]="{ 'is-invalid': isFormSubmit && f.imagepath
-         ('imagepath').errors }" />
-
-  <div *ngIf="isFormSubmit && registrationForm.get('imagepath').errors?.required" class="invalid-feedback">
-    Please select an image.
+  <div *ngIf="registrationForm.get('imagepath').errors.invalidDimensions" class="invalid-feedback">
+    Required dimensions are {{ registrationForm.get('imagepath').errors.invalidDimensions.requiredWidth }}x{{ registrationForm.get('imagepath').errors.invalidDimensions.requiredHeight }} pixels. Your image is {{ registrationForm.get('imagepath').errors.invalidDimensions.actualWidth }}x{{ registrationForm.get('imagepath').errors.invalidDimensions.actualHeight }} pixels.
   </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                       <!-- <input type="text" class="form-control" id="imageUrl"> -->
