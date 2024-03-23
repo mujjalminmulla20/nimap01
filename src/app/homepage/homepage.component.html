@@ -102,7 +102,7 @@
                     >
                       <!-- Image Preview -->
 
-                      <img
+                       <!-- <img
                         [src]="imageUrl"
                         style="width: 100px; height: 100px"
                       /><br />
@@ -119,6 +119,51 @@
                  >
                    please select image
                  </div>
+ -->
+
+
+               
+
+
+
+<!-- 
+ <img [src]="imageUrl" style="width: 100px; height: 100px"><br />
+  <input type="file" accept="image/*" (change)="handleFileInput($event)" formControlName="imagepath" required [ngClass]="{ 'is-invalid': isFormSubmit && f.imagepath.errors }" />
+  <div *ngIf="isFormSubmit && f.imagepath.errors?.required" class="invalid-feedback">
+    Please select an image.
+  </div>
+ -->
+
+
+
+
+
+<!--  
+
+ <img [src]="imageUrl" style="width: 100px; height: 100px;"><br />
+
+ <input type="file" accept="image/*" (change)="handleFileInput($event)" formControlName="imagepath" required
+        [ngClass]="{ 'is-invalid': isFormSubmit && f.imagepath.errors }" />
+ 
+ <div *ngIf="isFormSubmit && f.imagepath.errors?.required" class="invalid-feedback">
+   Please select an image.
+ </div>   -->
+
+
+
+
+
+ <img [src]="imageUrl" style="width: 100px; height: 100px;"><br />
+
+  <input type="file" accept="image/*" (change)="handleFileInput($event)" formControlName="imagepath" required
+         [ngClass]="{ 'is-invalid': isFormSubmit && f.imagepath
+         ('imagepath').errors }" />
+
+  <div *ngIf="isFormSubmit && registrationForm.get('imagepath').errors?.required" class="invalid-feedback">
+    Please select an image.
+  </div>
+
+
                       <!-- <input type="text" class="form-control" id="imageUrl"> -->
                     </div>
                     <br />
@@ -320,38 +365,40 @@
                         </div>
                       </div>
 
-                       <div class="row">
+                       <!-- <div class="row">
                         <div class="col mb-3">
-                        <!-- <textarea
-                            class="form-control"
-                            placeholder="Address"
-                            formControlName="address"
-                            required
-                            [ngClass]="{
-                              'is-invalid': isFormSubmit && f.address.errors
-                            }"
-                          >
-                        </textarea>
-                          <div
-                            *ngIf="isFormSubmit && f.address.errors?.required"
-                            class="invalid-feedback"
-                          >
-                            Address is required
-                          </div> -->
-
+                       
                           <label for="addressType">Address Type:</label>
                           <select formControlName="addressType"  required
                           [ngClass]="{
                             'is-invalid': isFormSubmit && f.addressType.errors
                           }"
-                        >
-                            <option value="home">Home</option>
+                        > -->
+
+
+
+                        <div class="row">
+                          <div class="col mb-3">
+                            <select
+                              class="form-select"
+                              formControlName="addressType"
+                              required
+                              [ngClass]="{
+                                'is-invalid': isFormSubmit && f.addressType.errors
+                              }"
+                            >
+                            <option value="" disabled selected>
+                              Address
+                            </option>
+
+                            <option value="home"> Home</option>
+                            
                             <option value="company">Company</option>
-                          </select>     <div
+                          </select>      <div
                           *ngIf="isFormSubmit && f.addressType.errors?.required"
                           class="invalid-feedback"
                         >
-                          please Select Your Address
+                          please Select Your Address type
                         </div>
                         
                           <div *ngIf="registrationForm.get('addressType').value === 'home'">
@@ -360,7 +407,9 @@
                             [ngClass]="{
                               'is-invalid': isFormSubmit && f.address1.errors
                             }"
-                          >   <div
+                          >     
+                          
+                          <div
                           *ngIf="isFormSubmit && f.address1.errors?.required"
                           class="invalid-feedback"
                         >

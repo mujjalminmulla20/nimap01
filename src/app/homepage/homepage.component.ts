@@ -35,7 +35,9 @@ public setDt:any
     private route: Router
   ) {
     this.registrationForm = this.fb.group({
-      imagepath:['',[Validators.required]],
+      
+      // imagepath:['',[Validators.required]],
+      imagepath: ['', Validators.required],
       firstname: [
         '',
         [
@@ -190,8 +192,9 @@ this.registrationForm.patchValue(this.setDt)
     this.comser
       .sendDtApi(this.registrationForm.value).subscribe({
         next:(res:any)=>{
-          console.log(res)
+          // console.log(res)
           this.tableData = res;
+          console.log(this.tableData)
         }
       })
     

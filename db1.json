@@ -1,22 +1,21 @@
 {
   "userData": [
     {
-      "id": "7df0",
-      "imagepath": "C:\\fakepath\\WhatsApp Image 2024-03-20 at 12.01.01 AM.jpeg",
-      "firstname": "john",
-      "lastname": "smith",
-      "email": "john@gmail.com",
-      "mob": "0245432967",
-      "age": 52,
+    
+      "id": "f209",
+      "imagepath": "https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg",
+      "firstname": "rahul",
+      "lastname": "moer",
+      "email": "rahulmore@gmail.com",
+      "mob": "6789012345",
+      "age": 18,
       "state": "Maharashtra",
-      "country": "Sri Lanka",
-      "addressType": "company",
-      "address1": "pippari",
-      "address2": "pune",
-      "tags": "cricket hockey football",
+      "country": "India",
+      "addressType": "home",
+      "address1": "mahuud",
+      "address2": "Panvel",
+      "tags": "cricket",
       "newsletter": true
     }
-    
-    
   ]
 }

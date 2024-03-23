@@ -96,14 +96,7 @@ h1 {
     margin-top: 20px;
     color: #fff;
   }
-/*  
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-  } */
-  
+
   label {
     margin-bottom: 5px;
   }
@@ -179,5 +172,30 @@ input {
     align-items: center;
     justify-content: center;
 }  
+
+
+
+
+
+
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 20% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 100%; /* Could be more or less, depending on screen size */
+}
+
+
+
+
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
 
 
