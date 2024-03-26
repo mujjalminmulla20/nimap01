@@ -107,10 +107,10 @@ export class HomepageComponent {
         ],
       ],
 
-
+age:['',[Validators.required]],
       // age: [0, [Validators.required, Validators.min(0), Validators.max(60)]],
 
-      age: [0, [Validators.required, Validators.min(0), Validators.max(60)]],
+      // age: [0, [Validators.required, Validators.min(0), Validators.max(60)]],
       
       state: ['', [Validators.required]],
       country: ['', [Validators.required]],

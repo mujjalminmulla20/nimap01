@@ -255,6 +255,38 @@
       "address2": "mumbai",
       "tags": "cricket",
       "newsletter": true
+    },
+    {
+      "id": "e764",
+      "imagepath": "https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg",
+      "firstname": "Mujjalmin ",
+      "lastname": "Mulla",
+      "email": "simmi@gmail.com",
+      "mob": "9356844586",
+      "age": 15,
+      "state": "Maharashtra",
+      "country": "India",
+      "addressType": "company",
+      "address1": "parel",
+      "address2": "mumbai",
+      "tags": "cricket",
+      "newsletter": true
+    },
+    {
+      "id": "7323",
+      "imagepath": "C:\\fakepath\\user Profile.webp",
+      "firstname": "Mujjalmin ",
+      "lastname": "Mulla",
+      "email": "simmi@gmail.com",
+      "mob": "9356844586",
+      "age": 37,
+      "state": "Maharashtra",
+      "country": "India",
+      "addressType": "home",
+      "address1": "Mumbai",
+      "address2": "borivali",
+      "tags": "cricket",
+      "newsletter": true
     }
   ]
 }

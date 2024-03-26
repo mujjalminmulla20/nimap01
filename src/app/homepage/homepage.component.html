@@ -301,11 +301,11 @@
 
 
                           [ngClass]="{
-                            'is-invalid': isFormSubmit && f.mob.errors
+                            'is-invalid': isFormSubmit && f.age.errors
                           }"
                         />
                         <div
-                        *ngIf="isFormSubmit && f.mob.errors?.required"
+                        *ngIf="isFormSubmit && f.age.errors?.required"
                         class="invalid-feedback"
                       >
                         age is required
@@ -453,7 +453,7 @@
                         
                           <div *ngIf="registrationForm.get('addressType').value === 'company'">
                            <label for="companyAddress1">Company Address 1:</label>
-                            <input type="text"  id="companyAddress1"  formControlName="address2"  required
+                            <input type="text"  id="companyAddress1" class="form-control"  formControlName="address2"  required
                             [ngClass]="{
                               'is-invalid': isFormSubmit && f. address1.errors
                             }"
@@ -464,7 +464,7 @@
                          Company Address 1 is required
                         </div> 
                             <label for="companyAddress2">Company Address 2:</label>
-                            <input type="text"  id="companyAddress2" formControlName="address1" required
+                            <input type="text"  id="companyAddress2"  class="form-control"  formControlName="address1" required
                             [ngClass]="{
                               'is-invalid': isFormSubmit && f.address2.errors
                             }"
