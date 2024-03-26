@@ -301,11 +301,11 @@
 
 
                           [ngClass]="{
-                            'is-invalid': isFormSubmit && f.firstname.errors
+                            'is-invalid': isFormSubmit && f.mob.errors
                           }"
                         />
                         <div
-                        *ngIf="isFormSubmit && f.firstname.errors?.required"
+                        *ngIf="isFormSubmit && f.mob.errors?.required"
                         class="invalid-feedback"
                       >
                         age is required

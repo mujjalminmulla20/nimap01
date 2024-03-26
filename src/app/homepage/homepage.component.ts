@@ -201,10 +201,7 @@ export class HomepageComponent {
       },
     });
 
-    // .then((res) => {
-    //   console.log(res);
-    //   this.tableData = res;
-    // });
+   
   }
 
   onClick() {
@@ -240,15 +237,8 @@ export class HomepageComponent {
 
 
 
-  get age() {
-    return this.registrationForm.get('age');
-  }
 
 
 
 
-
-  isAgeInvalid() {
-    return this.age.invalid && (this.age.dirty || this.age.touched);
-  }
 }
