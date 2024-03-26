@@ -152,15 +152,17 @@ h1 {
 
 
 
-input {
+#job-description {
     border: 2px solid #eee;
     padding: 5px 10px 5px 50px;
     font-size: 18px;
     line-height: 30px;
     outline: 0;
     display: block;
-    width: 100%;
-}
+    width: 700px;
+    height: 50px;
+    margin-right: 100px;
+} 
 .icon {
     position: absolute;
     right: 750px;

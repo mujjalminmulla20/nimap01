@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { CommonService } from '../common.service';
 
+
 import { Route, Router } from '@angular/router';
 
 function imageDimensionsValidator(width: number, height: number) {
@@ -35,6 +36,10 @@ function imageDimensionsValidator(width: number, height: number) {
   };
 }
 
+
+
+
+
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
@@ -66,11 +71,8 @@ export class HomepageComponent {
     private route: Router
   ) {
     this.registrationForm = this.fb.group({
-      imagepath: [
-        '',
-        [Validators.required, imageDimensionsValidator(310, 325)],
-      ],
-      // imagepath:['',[Validators.required]],
+      // imagepath: ['',[Validators.required, imageDimensionsValidator(310, 325)]],
+      imagepath:['',[Validators.required]],
       // imagepath: ['', Validators.required],
       firstname: [
         '',
@@ -105,11 +107,15 @@ export class HomepageComponent {
         ],
       ],
 
-      age: [0, [Validators.required]],
+
+      // age: [0, [Validators.required, Validators.min(0), Validators.max(60)]],
+
+      age: [0, [Validators.required, Validators.min(0), Validators.max(60)]],
+      
       state: ['', [Validators.required]],
       country: ['', [Validators.required]],
-      // address: ['', [Validators.required]],
-      addressType: ['', Validators.required], // Default to 'home'
+      
+      addressType: ['', Validators.required], 
       address1: ['', Validators.required],
       address2: ['', Validators.required],
       companyAddress1: ['', Validators.required],
@@ -160,6 +166,7 @@ export class HomepageComponent {
 
   onSubmit() {
     this.isFormSubmit = true;
+    console.log(this.registrationForm)
     if (this.registrationForm.valid) {
       const formData = this.registrationForm.value;
 
@@ -170,7 +177,7 @@ export class HomepageComponent {
     } else {
     }
 
-    //  this.registrationForm.reset();
+    
   }
 
   getData() {
@@ -229,5 +236,19 @@ export class HomepageComponent {
       this.registrationForm.get('companyAddress1').disable();
       this.registrationForm.get('companyAddress2').disable();
     }
+  }
+
+
+
+  get age() {
+    return this.registrationForm.get('age');
+  }
+
+
+
+
+
+  isAgeInvalid() {
+    return this.age.invalid && (this.age.dirty || this.age.touched);
   }
 }

@@ -54,7 +54,7 @@ ngOnInit(){
   this.http.getDtService()
   this.http.getDtService().subscribe({
     next:(res:any)=>{
-      this.tableData=res
+      this.allData=res
       // console.log(this.tableData)
     }
   })
@@ -105,4 +105,3 @@ UpdateDt(data:any){
 
 
 }
-

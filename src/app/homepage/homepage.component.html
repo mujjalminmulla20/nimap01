@@ -5,7 +5,7 @@
         <a href="url_to_your_logo_image"></a>
         <div class="navbar">
           <a href="#">Home</a>
-          <a href="#">About us</a>
+          <a   routerLink="profile">profile</a>
           <a href="#">Jobs</a>
           <a href="#">Clients</a>
           <a href="#">Employers</a>
@@ -56,7 +56,9 @@
           class="btn btn-primary"
           data-bs-toggle="modal"
           data-bs-target="#staticBackdrop"
+
         >
+        
           Register
         </button>
 
@@ -100,9 +102,9 @@
                         align-items: left;
                       "
                     >
-                      <!-- Image Preview -->
+                     
 
-                       <!-- <img
+                        <img
                         [src]="imageUrl"
                         style="width: 100px; height: 100px"
                       /><br />
@@ -119,22 +121,10 @@
                  >
                    please select image
                  </div>
- -->
-
-
-               
-
-
-
-
-
-
-
-
-
+  
 
 <!-- photo-upload.component.html -->
-<img [src]="imageUrl" style="width: 100px; height: 100px;"><br />
+ <!-- <img [src]="imageUrl" style="width: 100px; height: 100px;"><br />
 
 <input type="file" accept="image/*" (change)="handleFileInput($event)" formControlName="imagepath" required
   [ngClass]="{ 'is-invalid': isFormSubmit && registrationForm.get('imagepath').errors }" />
@@ -146,9 +136,8 @@
   <div *ngIf="registrationForm.get('imagepath').errors.invalidDimensions" class="invalid-feedback">
     Required dimensions are {{ registrationForm.get('imagepath').errors.invalidDimensions.requiredWidth }}x{{ registrationForm.get('imagepath').errors.invalidDimensions.requiredHeight }} pixels. Your image is {{ registrationForm.get('imagepath').errors.invalidDimensions.actualWidth }}x{{ registrationForm.get('imagepath').errors.invalidDimensions.actualHeight }} pixels.
   </div>
-</div>
-
-
+</div>  
+ -->
 
 
 
@@ -294,22 +283,50 @@
                       </div>
                     </div>
 
-                    <div class="row">
+                       <div class="row">
                       <div class="col mb-3">
                         <p>age</p>
+                        
                         <input
                           type="range"
                           min="0"
                           max="60"
                           value="0"
-                          class="slider"
+                          class="form-range"
                           id="age"
                           (input)="onRangeChange($event)"
                           formControlName="age"
+                          required
+
+
+
+                          [ngClass]="{
+                            'is-invalid': isFormSubmit && f.firstname.errors
+                          }"
                         />
+                        <div
+                        *ngIf="isFormSubmit && f.firstname.errors?.required"
+                        class="invalid-feedback"
+                      >
+                        age is required
+                      </div>
+
+                       
                         <p>{{ selectedValue }}</p>
                       </div>
-                    </div>
+                    
+                    </div>    
+
+              
+
+
+
+
+
+ 
+
+
+
 
                     <div class="row">
                       <div class="col mb-3">
@@ -407,7 +424,7 @@
                         
                           <div *ngIf="registrationForm.get('addressType').value === 'home'">
                             <label for="address1">Address 1:</label>
-                            <input type="text"  id="address1"  formControlName="address1"  required
+                            <input type="text"  id="address1"   class="form-control"  formControlName="address1"  required
                             [ngClass]="{
                               'is-invalid': isFormSubmit && f.address1.errors
                             }"
@@ -420,7 +437,7 @@
                           Address 1 is required
                         </div> 
                             <label for="address2">Address 2:</label>
-                            <input type="text"  id="address2" formControlName="address2" required
+                            <input type="text"  id="address2"   class="form-control"   class="form-control" formControlName="address2" required
                             [ngClass]="{
                               'is-invalid': isFormSubmit && f.address2.errors
                             }"
@@ -468,42 +485,6 @@
 
 
                            </div> 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -577,7 +558,7 @@
                         >&nbsp;
 
                         <button  type="reset" class="btn btn-danger"> Clear Data</button>&nbsp;
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary" routerLink="profile">
                           Submit
                         </button>
                       </div>

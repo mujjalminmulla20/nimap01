@@ -26,7 +26,7 @@
 
 
 <ng-container  *ngIf="tableData.length >0" > 
-  <table *ngFor="let dt of tableData">
+  <table>
 
    <div *ngIf="!editing">
       <img [src]="profileImageUrl" alt="Profile Image" style="height: 310px; width: 325px;">
@@ -48,16 +48,16 @@
 <br>
 
 <br>
-<img [src]="dt.imagepath" style="height: 350px;" >
+<img [src]="allData.imagepath" style="height: 350px;" >
 <!-- <button (click)="startEditing()" class="btn btn-primary">Edit Image</button> &nbsp; -->
 <br>
-i am {{dt.firstname}}
-{{dt.lastname}}
-and im above {{dt.age}} years old you
+i am {{allData.firstname}}
+{{allData.lastname}}
+and im above {{allData.age}} years old you
 <br>
-can send your mail to  <a href="">{{dt.email}}</a> i live in the state of 
+can send your mail to  <a href="">{{allData.email}}</a> i live in the state of 
 <br>
-{{dt.state}} I like to play  {{dt.tags}}
+{{allData.state}} I like to play  {{allData.tags}}
 And Please send me newsletter
 <br>
 please reach out to me on my mobile number
@@ -65,7 +65,7 @@ please reach out to me on my mobile number
 
 
 
-<button class="btn btn-info" (click)="UpdateDt(dt)"    
+<button class="btn btn-info" (click)="UpdateDt(allData)"    
 
 data-bs-toggle="modal"
 data-bs-target="#staticBackdrop"
