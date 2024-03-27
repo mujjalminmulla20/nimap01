@@ -282,17 +282,20 @@
                         </div>
                       </div>
                     </div>
-
+<!-- 
                        <div class="row">
                       <div class="col mb-3">
                         <p>age</p>
                         
-                        <input
+                         <input
                           type="range"
-                          min="0"
+                          min="1"
                           max="60"
-                          value="0"
-                          class="form-range"
+                          value="50"
+                          class="form-range" 
+
+                         
+
                           id="age"
                           (input)="onRangeChange($event)"
                           formControlName="age"
@@ -315,15 +318,68 @@
                         <p>{{ selectedValue }}</p>
                       </div>
                     
-                    </div>    
+                    </div>     -->
 
               
 
 
 
+                   
+
+                    <div class="row">
+                      <div class="col mb-3">
+                       
+                          <label for="age" class="form-label">Age:</label>
+                        
+
+                            <input type="range" min="20" max="60" value="60"
+                            
+class="form-range"
+
+                            formControlName="age"
+                            (input)="onRangeChange($event)"
+                            [ngClass]="{'is-invalid': isFormSubmit && registrationForm.get('age').errors}"
+                          />
+                          <div class="invalid-feedback" *ngIf="isFormSubmit && registrationForm.get('age').errors">
+                            Age is required
+                          </div>
+                    
+                          <p>Selected Age: {{ selectedValue }}</p>
+                    
+                      </div>
+                    </div>
+                    
+                    
 
 
- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -558,7 +614,7 @@
                         >&nbsp;
 
                         <button  type="reset" class="btn btn-danger"> Clear Data</button>&nbsp;
-                        <button type="submit" class="btn btn-primary" routerLink="profile">
+                        <button type="submit" class="btn btn-primary">
                           Submit
                         </button>
                       </div>

@@ -287,6 +287,22 @@
       "address2": "borivali",
       "tags": "cricket",
       "newsletter": true
+    },
+    {
+      "id": "b338",
+      "imagepath": "C:\\fakepath\\user Profile.webp",
+      "firstname": "clari ",
+      "lastname": "tech",
+      "email": "cc@gmail.com",
+      "mob": "9356844586",
+      "age": 33,
+      "state": "Maharashtra",
+      "country": "India",
+      "addressType": "company",
+      "address1": "pippari",
+      "address2": "pune",
+      "tags": "cricket",
+      "newsletter": true
     }
   ]
 }
