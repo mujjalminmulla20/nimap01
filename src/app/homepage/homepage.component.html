@@ -4,12 +4,12 @@
       <header class="header">
         <a href="url_to_your_logo_image"></a>
         <div class="navbar">
-          <a href="#">Home</a>
-          <a   routerLink="profile">profile</a>
+          <!-- <a href="#">Home</a> -->
+          <!-- <a  href="#">profile</a>
           <a href="#">Jobs</a>
           <a href="#">Clients</a>
           <a href="#">Employers</a>
-          <a href="#">Contact us</a>
+          <a href="#">Contact us</a> -->
         </div>
       </header>
     </div>
@@ -104,7 +104,7 @@
                     >
                      
 
-                        <img
+                      <img
                         [src]="imageUrl"
                         style="width: 100px; height: 100px"
                       /><br />
@@ -119,9 +119,75 @@
                    *ngIf="isFormSubmit && f.imagepath.errors?.required"
                    class="invalid-feedback"
                  >
-                   please select image
+                   please select image 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                  </div>
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- photo-upload.component.html -->
  <!-- <img [src]="imageUrl" style="width: 100px; height: 100px;"><br />
@@ -332,7 +398,7 @@
                           <label for="age" class="form-label">Age:</label>
                         
 
-                            <input type="range" min="20" max="60" value="60"
+                          <input type="range" min="20" max="60" value="0" class="slider" id="age" (input)="onRangeChange($event)"
                             
 class="form-range"
 
@@ -509,7 +575,7 @@ class="form-range"
                         
                           <div *ngIf="registrationForm.get('addressType').value === 'company'">
                            <label for="companyAddress1">Company Address 1:</label>
-                            <input type="text"  id="companyAddress1" class="form-control"  formControlName="address2"  required
+                            <input type="text"  id="companyAddress1" class="form-control"  formControlName="address1"  required
                             [ngClass]="{
                               'is-invalid': isFormSubmit && f. address1.errors
                             }"
@@ -520,7 +586,7 @@ class="form-range"
                          Company Address 1 is required
                         </div> 
                             <label for="companyAddress2">Company Address 2:</label>
-                            <input type="text"  id="companyAddress2"  class="form-control"  formControlName="address1" required
+                            <input type="text"  id="companyAddress2"  class="form-control"  formControlName="address2" required
                             [ngClass]="{
                               'is-invalid': isFormSubmit && f.address2.errors
                             }"
@@ -605,7 +671,7 @@ class="form-range"
                     <!-- Submit and Cancel Buttons -->
                     <div class="row">
                       <div class="col">
-                        <button
+                        <button 
                           type="button"
                           class="btn btn-secondary"
                           data-bs-dismiss="modal"
@@ -614,7 +680,9 @@ class="form-range"
                         >&nbsp;
 
                         <button  type="reset" class="btn btn-danger"> Clear Data</button>&nbsp;
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary"               data-bs-dismiss="modal"
+                        aria-label="Close"
+                           >
                           Submit
                         </button>
                       </div>
@@ -742,3 +810,10 @@ class="form-range"
 
   <!-- </div> -->
 </body>
+
+
+
+
+
+
+<router-outlet></router-outlet>

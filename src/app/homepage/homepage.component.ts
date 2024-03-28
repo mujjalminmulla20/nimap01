@@ -108,9 +108,9 @@ export class HomepageComponent {
       ],
 
 // age:['', [Validators.required]],
-      age: ['', [Validators.required, Validators.min(0), Validators.max(60)]],
+      // age: ['', [Validators.required, Validators.min(0), Validators.max(60)]],
 
-      // age: [0, [Validators.required, Validators.min(0), Validators.max(60)]],
+      age: ['', [Validators.required, Validators.min(0), Validators.max(60)]],
       
       state: ['', [Validators.required]],
       country: ['', [Validators.required]],
@@ -152,6 +152,65 @@ export class HomepageComponent {
       };
     }
   }
+
+
+
+
+
+
+
+
+  // handleFileInput(event: any): void {
+  //   const file: File = event.target.files[0];
+  //   const reader = new FileReader();
+
+  //   reader.onload = (e: any) => {
+  //     this.imageUrl = e.target.result;
+  //     this.validateImageDimensions(file);
+  //   };
+
+  //   reader.readAsDataURL(file);
+  // }
+
+  // validateImageDimensions(file: File): void {
+  //   const img = new Image();
+  //   img.src = URL.createObjectURL(file);
+  //   img.onload = () => {
+  //     if (img.width > 310 || img.height > 325) {
+  //       console.log('Image resolution is greater than 100x100');
+  //       // You can add your logic here to handle validation failure
+  //     } else {
+  //       console.log('Image resolution is within 100x100');
+  //       // You can add your logic here to handle validation success
+  //     }
+  //   };
+  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   ngOnInit() {
     this.comser.getDtService1().subscribe({
@@ -234,6 +293,7 @@ export class HomepageComponent {
       this.registrationForm.get('companyAddress2').disable();
     }
   }
+
 
 
 
